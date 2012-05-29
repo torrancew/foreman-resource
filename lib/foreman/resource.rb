@@ -27,17 +27,29 @@ module Foreman
       []
     end
 
-    def self.get(p = "")
-      url = p.empty? ? path : "#{path}/#{p}"
-      JSON.parse connection[URI.escape(url)].get.body
+    # Return a result, converted into class instance(s)
+    def self.get(p = '')
+      url    = (p.nil? or p.empty?) ? path : "#{path}/#{p}"
+      result = JSON.parse(connection[URI.escape(url)].get.body)
+
+      if result.respond_to?(:has_key?) and result.has_key?(self.class_name)
+        self.new(result)
+      elsif result.respond_to?(:map)
+        result.map { |r| self.new(r) }
+      else
+        self.new(result)
+      end
     end
 
     # collection path, such as foreman/hosts
     def self.path
-      "#{self.to_s.downcase.gsub(/^.*::/,"")}s"
+      "#{self.class_name}s"
     end
 
     protected
+    def self.class_name
+      self.to_s.downcase.gsub(/^.*::/, '')
+    end
 
     def self.search q
       return "" if q.nil? or q.empty?
