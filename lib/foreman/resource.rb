@@ -35,9 +35,9 @@ module Foreman
       result = JSON.parse(connection[URI.escape(url)].get.body)
 
       if result.respond_to?(:has_key?) and result.has_key?(self.class_name)
-        self.new(result)
+        self.new(result[self.class_name])
       elsif result.respond_to?(:map)
-        result.map { |r| self.new(r) }
+        result.map { |r| self.new(r[self.class_name]) }
       else
         self.new(result)
       end
