@@ -5,10 +5,6 @@ module Foreman
 
     attr_reader :name, :id
 
-    def self.all(filter = "")
-      super(filter).map {|hg| Hostgroup.new(hg["hostgroup"])}
-    end
-
     def initialize opts = {}
       opts.each do |k,v|
         eval("@#{k} = v") if self.respond_to?(k)

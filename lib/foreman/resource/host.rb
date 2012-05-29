@@ -5,10 +5,6 @@ module Foreman
 
     attr_reader :name
 
-    def self.all(filter = "")
-      super(filter).map{|h| self.new({:name => h.to_s})}
-    end
-
     def initialize opts = {}
       @name = opts[:name] || raise("Must provide a name")
     end
