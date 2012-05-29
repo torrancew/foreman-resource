@@ -4,7 +4,11 @@ require "foreman"
 
 class Test::Unit::TestCase
   def setup
-  opts = {:url => "http://0.0.0.0:3000", :user => "admin", :password => "changeme"}
-  Foreman::Resource.connect(opts)
+    opts = {
+      :url      => ENV['FOREMAN_SERVER']   || 'http://localhost:3000',
+      :user     => ENV['FOREMAN_USER']     || '',
+      :password => ENV['FOREMAN_PASSWORD'] || '',
+    }
+    Foreman::Resource.connect(opts)
   end
 end
