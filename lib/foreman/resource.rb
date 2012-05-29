@@ -7,12 +7,14 @@ module Foreman
   class Resource
 
     def self.connect opts = {}
-      user     = opts[:user]     || raise("Must provide User")
-      password = opts[:password] || raise("Must provide Password")
-      url      = opts[:url]      || raise("Must provide URL")
-      headers  = { :accept => :json, :content_type => :json }
+      url  = opts.delete(:url) || raise('Must provide URL')
+      hdrs = { :accept => :json, :content_type => :json }
+      
+      opts[:headers]      = hdrs
+      opts[:timeout]      = 60
+      opts[:open_timeout] = 10
 
-      @@resource =  RestClient::Resource.new(url, {:user => user, :password =>  password, :timeout => 60, :open_timeout => 10, :headers => headers})
+      @@resource =  RestClient::Resource.new(url, opts)
     end
 
     def self.connection
