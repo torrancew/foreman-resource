@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class Foreman::HostGroupTest < Test::Unit::TestCase
   def setup
     super
@@ -9,9 +11,10 @@ class Foreman::HostGroupTest < Test::Unit::TestCase
     assert_equal Foreman::Hostgroup.path, "hostgroups"
   end
 
-  def test_list_should_create_hostgroup_objects
+  def test_all_should_create_hostgroup_objects
     assert Foreman::Hostgroup.all.first.is_a?(Foreman::Hostgroup)
   end
+
   def test_should_have_attributes
     @attr.each do |o|
       assert_not_nil @hostgroup.send(o)
