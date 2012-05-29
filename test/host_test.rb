@@ -18,9 +18,5 @@ class Foreman::HostTest < Test::Unit::TestCase
     assert_equal @host.name, "test"
   end
 
-  def test_should_have_list_of_hosts
-    assert Foreman::Host.all.first.hosts.first.is_a? Foreman::Host
-  end
-
 end
 
