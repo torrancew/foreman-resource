@@ -22,9 +22,11 @@ module Foreman
     end
 
     def self.all(filter = "")
-      get(search(filter))
-    rescue RestClient::ResourceNotFound
-      []
+      begin
+        get(search(filter))
+      rescue RestClient::ResourceNotFound
+        []
+      end
     end
 
     # Return a result, converted into class instance(s)
