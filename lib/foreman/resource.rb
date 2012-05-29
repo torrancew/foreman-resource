@@ -51,21 +51,20 @@ module Foreman
       self.to_s.downcase.gsub(/^.*::/, '')
     end
 
-    def self.search q
-      return "" if q.nil? or q.empty?
-      "?search=#{q}"
+    def self.search(q)
+      (q.nil? or q.empty?) ? '' : "?search=#{q}"
     end
 
     def rid
       Raise "Abstracted ID, must be defined per Resource class"
     end
 
-    def get p
+    def get(p)
       url = p.empty? ? rid : "#{rid}/#{p}"
       self.class.get url
     end
 
-    def <=> other
+    def <=>(other)
       to_s <=> other.to_s
     end
 
