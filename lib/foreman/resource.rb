@@ -1,3 +1,8 @@
+require 'rubygems'
+require 'uri'
+require 'json'
+require 'rest_client'
+
 module Foreman
   class Resource
 

@@ -1,3 +1,5 @@
+require 'foreman/resource'
+
 module Foreman
   class Hostgroup < Resource
 

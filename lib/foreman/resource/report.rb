@@ -1,4 +1,5 @@
 require 'time'
+require 'foreman/resource'
 
 module Foreman
   class Report < Resource

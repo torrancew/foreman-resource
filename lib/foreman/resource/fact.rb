@@ -1,3 +1,5 @@
+require 'foreman/resource'
+
 module Foreman
   class Fact < Resource
     attr_reader :name, :value, :host

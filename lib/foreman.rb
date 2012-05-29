@@ -1,15 +1,8 @@
-require 'rubygems'
-require 'json'
-require 'uri'
-require "rest_client"
-
 module Foreman
-
-  autoload :Resource,   "foreman/resource"
-  autoload :Host,       "foreman/resource/host"
-  autoload :Fact,       "foreman/resource/fact"
-  autoload :Report,     "foreman/resource/report"
-  autoload :Hostgroup,  "foreman/resource/hostgroup"
-  autoload :Hypervisor, "foreman/resource/hypervisor"
-
+  require 'foreman/resource'
+  require 'foreman/resource/host'
+  require 'foreman/resource/fact'
+  require 'foreman/resource/report'
+  require 'foreman/resource/hostgroup'
+  require 'foreman/resource/hypervisor'
 end
