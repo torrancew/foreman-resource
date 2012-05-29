@@ -3,7 +3,7 @@ require 'test_helper'
 class Foreman::HostGroupTest < Test::Unit::TestCase
   def setup
     super
-    @hostgroup = Foreman::Hostgroup.new(:name => "test", :id => 1)
+    @hostgroup = Foreman::Hostgroup.new('name' => 'test', 'id' => 1)
     @attr = [:name, :id]
   end
 

@@ -6,7 +6,7 @@ module Foreman
     attr_reader :name
 
     def initialize opts = {}
-      @name = opts[:name] || raise("Must provide a name")
+      @name = opts['name'] || raise("Must provide a name")
     end
 
     # our ID is the name

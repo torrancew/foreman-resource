@@ -3,7 +3,7 @@ require 'test_helper'
 class Foreman::HostTest < Test::Unit::TestCase
   def setup
     super
-    @host = Foreman::Host.new(:name => "test", :id => 1)
+    @host = Foreman::Host.new('name' => "test")
   end
 
   def test_path

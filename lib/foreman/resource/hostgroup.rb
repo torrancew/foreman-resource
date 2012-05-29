@@ -5,15 +5,9 @@ module Foreman
 
     attr_reader :name, :id
 
-    def initialize opts = {}
-      opts.each do |k,v|
-        eval("@#{k} = v") if self.respond_to?(k)
-      end
-
-      {:name => name, :id => id}.each do |k,v|
-        raise("Must provide a #{k}") if v.nil?
-      end
-
+    def initialize(opts = {})
+      @name = opts['name'] || raise('Hostgroups require a name')
+      @id   = opts['id']   || raise('Hostgroups require an ID')
     end
 
     def path
